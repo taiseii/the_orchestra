@@ -34,34 +34,13 @@ void setup() {
   pinMode(33, OUTPUT);
  
 }
- 
-void loop() {
-    if (ESP_BT.available()){
-    incoming = ESP_BT.read(); //Read what we recevive 
-    Serial.print("Received:"); 
-    Serial.println(incoming);
-        if (incoming == 49){
-            while (true){
-                all_on();
-            }
-            
-        }
-        
-        if (incoming == 48){
-            while(true){
-                loop_order();
-            }      
-        }   
-}
-
-
 
 void all_on(){
     for (int i = 0; i < 20; i++){
         digitalWrite(lsr_order[i], HIGH);
     }
 }
- 
+
 void loop_order(){
         for (int i = 0; i < 20; i++){
           digitalWrite(lsr_order[i], HIGH);
@@ -78,4 +57,36 @@ void loop_random(){
         digitalWrite(lsr_order[i], LOW);
         delay(50);
     }    
+}
+
+void strobo(){
+      for (int i = 0; i < 20; i++){
+        digitalWrite(lsr_order[i], HIGH);
+    }
+          for (int i = 0; i < 20; i++){
+        digitalWrite(lsr_order[i], LOW);
+    }
+          for (int i = 0; i < 20; i++){
+        digitalWrite(lsr_order[i], HIGH);
+    }
+}
+ 
+void loop() {
+    if (ESP_BT.available()){
+    incoming = ESP_BT.read(); //Read what we recevive 
+    Serial.print("Received:"); 
+    Serial.println(incoming);
+        if (incoming == 49){
+            
+                all_on();
+            
+            
+        }
+        
+        if (incoming == 48){
+            
+                loop_order();
+                  
+        }   
+    }
 }
