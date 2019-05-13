@@ -131,96 +131,17 @@ void loop() {
     incoming = ESP_BT.read(); //Read what we recevive 
     Serial.print("Received:"); 
     Serial.println(incoming);
-
-
-
-        if (incoming == 48){
-          all_off();
-        }
-        
         if (incoming == 49){
             
                 all_on();
+            
+            
         }
         
-        if (incoming == 50){
-            while(true){
-              loop_order();
-              
-              incoming2 = ESP_BT.read();
-              Serial.println("Received2:");
-              Serial.println(incoming2);
-              if(incoming2 == 48){
-                break;
-              }
-            }
-        }
-
-        if (incoming == 51){
-          while(true){
-
-            strobe();            
-            incoming2 = ESP_BT.read();
-            Serial.println("Received2:");
-            Serial.print(incoming2);
-            if(incoming2 == 48){
-                break;
-            }
-          }
-        }
-
-        if(incoming == 52){
-          while(true){
-            loop_inverse();
-            incoming2 = ESP_BT.read();
-            Serial.println("Received2:");
-            Serial.println(incoming2);
-            if(incoming2 == 48){
-                break;
-            }
-          }
-        }
-
-                if(incoming == 53){
-          while(true){
-            loop_order3();
-            incoming2 = ESP_BT.read();
-            Serial.println("Received2:");
-            Serial.println(incoming2);
-            if(incoming2 == 48){
-                break;
-            }
-          }
-        }
-
-//random
-        if(incoming == 54){
-            while(true){
-              loop_inverse3();
-              incoming2 = ESP_BT.read();
-              Serial.println("Received2:");
-              Serial.println(incoming2);
-            if(incoming2 == 48){
-                break;
-            }
-          }
-        }
-//pattern
-        if(incoming == 55){
-  while(true){
-    
-loop_random();
-          
-          incoming2 = ESP_BT.read();
-          Serial.println("Received2:");
-          Serial.println(incoming2);
-          if(incoming2 == 48){
-                break;
-          }
-  }
-
-          
-        }
-        
+        if (incoming == 48){
+            
+                loop_order();
+                  
+        }   
     }
 }
